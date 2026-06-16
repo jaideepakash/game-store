@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Verify Payment - Game Store</title>
+    <link rel="stylesheet" href="/styles.css" />
+</head>
+
+<body>
+    <header class="topbar">
+        <div class="brand">
+            <div class="logo">🔒</div>
+            <div>
+                <div class="brand-title">Verify Payment</div>
+                <div class="brand-sub">Demo verification for cross-device access</div>
+            </div>
+        </div>
+        <nav class="nav">
+            <a class="nav-link" href="/index.html">Home</a>
+        </nav>
+    </header>
+
+    <main class="container">
+        <div class="play-wrap">
+            <section class="hero" style="margin-top:0">
+                <h1 style="margin-top:0">After you pay</h1>
+                <p>Enter the Txn/Reference ID and the email you used on checkout. Then unlock access.</p>
+
+                <div class="form-row" style="margin-top:12px">
+                    <div style="flex:1; min-width:240px">
+                        <label class="field-label" for="orderId">Order ID</label>
+                        <div style="display:flex; gap:10px; margin-top:8px; align-items:center">
+                            <input id="orderId" class="input" type="text" readonly />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-row" style="margin-top:12px">
+                    <div style="flex:1; min-width:240px">
+                        <label class="field-label" for="txnId">Txn/Reference ID</label>
+                        <input id="txnId" class="input" type="text" placeholder="e.g., 12345ABC..." />
+                    </div>
+                </div>
+
+                <div class="form-row" style="margin-top:12px">
+                    <div style="flex:1; min-width:240px">
+                        <label class="field-label" for="email">Email</label>
+                        <input id="email" class="input" type="email" placeholder="name@example.com"
+                            autocomplete="email" />
+                    </div>
+                </div>
+
+                <div style="margin-top:14px">
+                    <button id="verifyBtn" class="btn primary" type="button">I Paid (Verify)</button>
+                </div>
+
+                <p id="status" class="notice" style="display:block">&nbsp;</p>
+
+                <div id="playArea" style="display:none; margin-top:14px">
+                    <button id="playBtn" class="btn primary" type="button">Go to My Games</button>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script src="/upipay.js"></script>
+
+    <script>
+        // Small UX helpers
+        document.getElementById('playArea').style.display = 'none';
+        document.getElementById('playBtn').style.display = 'none';
+        const sp = new URLSearchParams(window.location.search);
+        const oid = sp.get('orderId');
+        if (oid) document.getElementById('orderId').value = oid;
+        else {
+            const pending = localStorage.getItem('pendingOrderId');
+            if (pending) document.getElementById('orderId').value = pending;
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Game Store - UPI</title>
+    <link rel="stylesheet" href="/styles.css" />
+</head>
+
+<body>
+    <header class="topbar">
+        <div class="brand">
+            <div class="logo">🎮</div>
+            <div>
+                <div class="brand-title">Game Store</div>
+                <div class="brand-sub">Buy once, play on PC + Mobile</div>
+            </div>
+        </div>
+        <nav class="nav">
+            <a class="nav-link" href="/play.html">My Games</a>
+        </nav>
+    </header>
+
+    <main class="container">
+        <section class="hero">
+            <h1>Choose your game</h1>
+            <p>Pay using UPI. After verification, your access syncs across devices using your email.</p>
+
+            <div class="form-row">
+                <label class="field-label" for="email">Email (for cross-device access)</label>
+                <input id="email" class="input" type="email" placeholder="name@example.com" autocomplete="email" />
+            </div>
+
+            <p class="note">Price shown: <b>₹200</b> per game (demo).</p>
+        </section>
+
+        <section class="grid" aria-label="Game list">
+            <article class="card" data-game-id="gta5">
+                <div class="card-media">
+                    <div class="game-logo" aria-hidden="true">
+                        <svg viewBox="0 0 120 120" width="86" height="86" role="img" aria-label="GTA 5">
+                            <defs>
+                                <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+                                    <stop offset="0" stop-color="#00d084" />
+                                    <stop offset="1" stop-color="#0088ff" />
+                                </linearGradient>
+                            </defs>
+                            <rect x="10" y="10" width="100" height="100" rx="22" fill="url(#g1)" opacity="0.18" />
+                            <text x="60" y="58" text-anchor="middle" font-size="22" fill="#00c6ff"
+                                font-weight="800">GTA</text>
+                            <text x="60" y="83" text-anchor="middle" font-size="16" fill="#ffffff" opacity="0.95"
+                                font-weight="700">5</text>
+                        </svg>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h2 class="game-title">GTA 5</h2>
+                    <div class="price">₹<span class="price-value">200</span></div>
+                    <ul class="bullets">
+                        <li>Instant access after verification</li>
+                        <li>Works on PC + Mobile</li>
+                    </ul>
+                    <button class="btn primary buy-btn" type="button">Buy Now</button>
+                    <div class="small-muted"></div>
+                </div>
+            </article>
+
+            <article class="card" data-game-id="rdr2">
+                <div class="card-media">
+                    <div class="game-logo" aria-hidden="true">
+                        <svg viewBox="0 0 120 120" width="86" height="86" role="img" aria-label="Red Dead Redemption 2">
+                            <defs>
+                                <linearGradient id="g2" x1="0" y1="0" x2="1" y2="1">
+                                    <stop offset="0" stop-color="#ff7a18" />
+                                    <stop offset="1" stop-color="#af002d" />
+                                </linearGradient>
+                            </defs>
+                            <rect x="10" y="10" width="100" height="100" rx="22" fill="url(#g2)" opacity="0.18" />
+                            <text x="60" y="58" text-anchor="middle" font-size="17" fill="#ff6b00"
+                                font-weight="850">RDR</text>
+                            <text x="60" y="83" text-anchor="middle" font-size="16" fill="#ffffff" opacity="0.95"
+                                font-weight="700">2</text>
+                        </svg>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h2 class="game-title">Red Dead Redemption 2</h2>
+                    <div class="price">₹<span class="price-value">200</span></div>
+                    <ul class="bullets">
+                        <li>Instant access after verification</li>
+                        <li>Works on PC + Mobile</li>
+                    </ul>
+                    <button class="btn primary buy-btn" type="button"
+                        onclick="window.location.href='upi://pay?pa=9290860080@upi&pn=CloudGaming&am=99&cu=INR'">
+                        Buy Now
+                    </button>
+                </div>
+            </article>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <span></span>
+    </footer>
+
+    <script src="/upipay.js"></script>
+</body>
+
+</html>

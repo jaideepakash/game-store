@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>My Games - Game Store</title>
+    <link rel="stylesheet" href="/styles.css" />
+</head>
+
+<body>
+    <header class="topbar">
+        <div class="brand">
+            <div class="logo">🕹️</div>
+            <div>
+                <div class="brand-title">My Games</div>
+                <div class="brand-sub">Access synced across devices (demo)</div>
+            </div>
+        </div>
+        <nav class="nav">
+            <a class="nav-link" href="/index.html">Home</a>
+        </nav>
+    </header>
+
+    <main class="container">
+        <div class="play-wrap">
+            <section class="hero" style="margin-top:0">
+                <h1 style="margin-top:0">Unlocked games</h1>
+                <p>Enter the same email you used while buying. Then click Load.</p>
+
+                <div class="form-row" style="margin-top:12px">
+                    <div style="flex:1; min-width:240px">
+                        <label class="field-label" for="playEmail">Email</label>
+                        <input id="playEmail" class="input" type="email" placeholder="name@example.com"
+                            autocomplete="email" />
+                    </div>
+                    <div style="min-width:160px; align-self:end">
+                        <button id="loadBtn" class="btn primary" type="button">Load</button>
+                    </div>
+                </div>
+
+                <div id="status" class="notice" style="display:block; margin-top:14px">&nbsp;</div>
+
+                <table class="table" style="margin-top:14px">
+                    <thead>
+                        <tr>
+                            <th>Game</th>
+                            <th>Access</th>
+                        </tr>
+                    </thead>
+                    <tbody id="gameList">
+                        <tr>
+                            <td colspan="2" style="color:var(--muted)">No games loaded.</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="notice" style="margin-top:14px">
+                    <b>Demo note:</b> This front-end shows “Unlocked” status based on the email synced to the backend.
+                    Actual game launch is not included.
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script src="/upipay.js"></script>
+    <script>
+        // allow play.html to use the same upipay.js wiring
+        // (upipay.js wires play page automatically)
+        const params = new URLSearchParams(window.location.search);
+        const email = params.get('email');
+        if (email) {
+            const el = document.getElementById('playEmail');
+            if (el) el.value = email;
+        }
+    </script>
+</body>
+
+</html>
